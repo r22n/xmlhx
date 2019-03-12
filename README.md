@@ -58,28 +58,35 @@ you can specify the advanced settings for xmlhx by config file of xml.
 <conf>
     <mxml>
         <!-- you can put multiple rules for xml element -->
+        <!-- xmlhx will apply rule in this order -->
         <rule>
-            <!-- hit xml element by match condition which uses tag condition and attribute condition as AND conditions -->
-            <!-- just match tag condition if you put tag element only -->
-            <!-- just match attribute condition while attribute element alone -->
+            <!-- hit xml element by match condition which uses tag condition as AND conditions -->
+            <!-- tag element matches xml tag name as classname -->
+            <!-- attribute element matches xml attribute name  -->
+            <!-- attvaluesuffix element matches the suffix of value which attribute represents -->
             <!-- you must put tag or attribute element here -->
             <match>
-                <tag>w</tag>
-                <attribute>id</attribute>
+                <!-- <tag>Button</tag> -->
+                <attribute>width</attribute>
+                <attvaluesuffix>&#37;</attvaluesuffix>
             </match>
             <!-- overrides element tag name or attribute when generating gui code. -->
             <!-- the tag element set xml element tag name by specify self text-->
             <!-- the attribute element replace xml element attribute by specify self text -->
             <!-- the style element replace xml element attribute into style field if it appears in supply element-->
             <!-- the quote element surrounds xml element attribute if it appears in supply element -->
-            <!-- you must put tag or attribute or style or quote element -->
-            <!-- you must put attribute element in match element if you want to use attribute, style, quote in supply -->
+            <!-- the number element fetches number from attribute value from head if it appears in supply element-->
+            <!-- you must put tag or attribute or style or quote or number element -->
+            <!-- you must put attribute element in match element if you want to use attribute, style, quote, number in supply -->
             <!-- you must put supply or erase element here, and both supply and erase can not place here-->
+            <!-- you must careful the case which does not match rule while supplying below -->
+            <!-- for each supply element check rule given by match element strictly-->
             <supply>
-                <tag>w</tag>
-                <attribute>w</attribute>
+                <!-- <tag>MyButton</tag>
+                <attribute>percentWidth</attribute>
                 <style/>
-                <quote/>
+                <quote/> 
+                <number/>-->
             </supply>
         </rule>
         <rule>
