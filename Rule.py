@@ -374,8 +374,10 @@ def loadConf(confxmlpath):
     conf=None
     try:
         conf=ET.parse(confxmlpath).getroot()
+    except SyntaxError as e:
+        raise SyntaxError("configuration file has missing syntax: %s"%(e.message))
     except:
-        raise FileNotFoundError("configuration file of %s was not found or busy for reading and so on..."%(confxmlpath))
+        raise RuntimeError("configuration file of %s was not found or busy for reading and so on..."%(confxmlpath))
     
     haxeRuleAddChild=None
     haxeRuleDeclareField=None

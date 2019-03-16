@@ -20,8 +20,8 @@ try:
     conf=loadConf(confxmlpath)
 except SyntaxError as e:
     eprint("config file of %s have missing syntax: %s"%(confxmlpath,e.message))
-# except:
-#     eprint("config file of %s has error"%confxmlpath)
+except RuntimeError as e:
+    eprint("config file of %s has error: %s"%(confxmlpath,e.message))
 if conf is None:
     quit()
 mxmlrules=conf.getMXMLNodeRule()
