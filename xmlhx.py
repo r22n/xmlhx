@@ -91,6 +91,7 @@ while not initializations.empty():
         print("%s%s(%s);"%(indent,haxeAddChild,variable))
     else:
         print("%s%s.%s(%s);"%(indent,parent.getAttribute(declareID),haxeAddChild,variable))
+    print
     for child in node.getChildren():
         initializations.put(child)
 print("}")
